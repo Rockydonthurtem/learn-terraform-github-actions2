@@ -15,7 +15,7 @@ terraform {
   required_version = ">= 1.1.0"
 
   cloud {
-    organization = "Spread_Hate"
+    organization = "Terraf1111"
 
     workspaces {
       name = "gh-actions-demo"
