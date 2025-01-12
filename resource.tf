@@ -106,47 +106,47 @@ data "aws_ami" "latest-amazon-linux-image" {
 #   public_key = file(var.public_key_location)
 # }
 
-resource "aws_instance" "myapp-server" {
-  ami           = data.aws_ami.latest-amazon-linux-image.id
-  instance_type = var.instance_type
+# resource "aws_instance" "myapp-server" {
+#   ami           = data.aws_ami.latest-amazon-linux-image.id
+#   instance_type = var.instance_type
 
-  subnet_id              = aws_subnet.myapp-subnet-1.id
-  vpc_security_group_ids = [aws_security_group.myapp-sg.id]
-  availability_zone      = var.avail_zone
+#   subnet_id              = aws_subnet.myapp-subnet-1.id
+#   vpc_security_group_ids = [aws_security_group.myapp-sg.id]
+#   availability_zone      = var.avail_zone
 
-  associate_public_ip_address = true
-  # key_name                    = "server-key-pair"
-  user_data = file("entry-script.sh")
-  # user_data                   = <<EOF
-  #               #!/bin/bash
-  #               sudo yum update -y && sudo yum install -y docker
-  #               sudo systemctrl start docker 
-  #               sudo usermod -aG docker ec2-user
-  #               docker run -p 8080:80 nginx
-  #           EOF
-  user_data_replace_on_change = true
+#   associate_public_ip_address = true
+#   # key_name                    = "server-key-pair"
+#   user_data = file("entry-script.sh")
+#   # user_data                   = <<EOF
+#   #               #!/bin/bash
+#   #               sudo yum update -y && sudo yum install -y docker
+#   #               sudo systemctrl start docker 
+#   #               sudo usermod -aG docker ec2-user
+#   #               docker run -p 8080:80 nginx
+#   #           EOF
+#   user_data_replace_on_change = true
 
-  connection {
-    type = "ssh"
-    host = self.public_ip
-    user = "ec2-user"
-    # private_key = file(var.private_key_location)
-  }
+#   connection {
+#     type = "ssh"
+#     host = self.public_ip
+#     user = "ec2-user"
+#     # private_key = file(var.private_key_location)
+#   }
 
-  #Provisioners are not recommended
-  provisioner "file" {
-    source      = "entry-script.sh"
-    destination = "/home/ec2-user/entry-script-on-ec2.sh"
-  }
+#   #Provisioners are not recommended
+#   provisioner "file" {
+#     source      = "entry-script.sh"
+#     destination = "/home/ec2-user/entry-script-on-ec2.sh"
+#   }
 
-  provisioner "remote-exec" {
-    inline = ["/home/ec2-user/entry-script.sh"]
-  }
+#   provisioner "remote-exec" {
+#     inline = ["/home/ec2-user/entry-script.sh"]
+#   }
 
-  provisioner "local-exec" {
-    command = "echo ${self.public_ip} > output.txt"
-  }
-}
+#   provisioner "local-exec" {
+#     command = "echo ${self.public_ip} > output.txt"
+#   }
+# }
 
 
 
