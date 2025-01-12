@@ -21,14 +21,14 @@ terraform {
   #     name = "gh-actions-demo"
   #   }
   # }
-  cloud { 
+  cloud {
 
-    organization = "Terraf1111" 
+    organization = "Terraf1111"
 
-    workspaces { 
-      name = "learn-terraform_1" 
-    } 
-  } 
+    workspaces {
+      name = "learn-terraform_1"
+    }
+  }
 
 }
 
