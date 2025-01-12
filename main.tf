@@ -15,12 +15,21 @@ terraform {
   required_version = ">= 1.1.0"
 
   cloud {
-    organization = "REPLACE_ME"
+    organization = "Spread_Hate"
 
     workspaces {
       name = "gh-actions-demo"
     }
   }
+  # cloud { 
+    
+  #   organization = "Terraf1111" 
+
+  #   workspaces { 
+  #     name = "learn-terraform_1" 
+  #   } 
+  # } 
+  
 }
 
 provider "aws" {
