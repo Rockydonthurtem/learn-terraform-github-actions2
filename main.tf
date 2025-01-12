@@ -22,14 +22,14 @@ terraform {
     }
   }
   # cloud { 
-    
+
   #   organization = "Terraf1111" 
 
   #   workspaces { 
   #     name = "learn-terraform_1" 
   #   } 
   # } 
-  
+
 }
 
 provider "aws" {
