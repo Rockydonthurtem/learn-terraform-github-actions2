@@ -14,21 +14,21 @@ terraform {
   }
   required_version = ">= 1.1.0"
 
-  cloud {
-    organization = "Terraf1111"
+  # cloud {
+  #   organization = "Terraf1111"
 
-    workspaces {
-      name = "gh-actions-demo"
-    }
-  }
-  # cloud { 
+  #   workspaces {
+  #     name = "gh-actions-demo"
+  #   }
+  # }
+  cloud { 
 
-  #   organization = "Terraf1111" 
+    organization = "Terraf1111" 
 
-  #   workspaces { 
-  #     name = "learn-terraform_1" 
-  #   } 
-  # } 
+    workspaces { 
+      name = "learn-terraform_1" 
+    } 
+  } 
 
 }
 
