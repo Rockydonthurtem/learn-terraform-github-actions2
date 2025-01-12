@@ -25,8 +25,7 @@ env:
 jobs:
   terraform:
     name: "Terraform"
-
-     if: github.repository != 'hashicorp-education/learn-terraform-github-actions'
+    if: github.repository != 'hashicorp-education/learn-terraform-github-actions'
     runs-on: Terraform Plan
     permissions:
       pull-requests: write
